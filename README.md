@@ -1,4 +1,4 @@
-# testuberdock
+# uberdock
 To run (Windows):
 
 1. install python 3 at https://www.python.org/ftp/python/3.7.3/python-3.7.3.exe
