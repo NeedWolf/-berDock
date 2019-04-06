@@ -53,9 +53,9 @@ div.ex
     margin:0px;
 }
 /*// tanchuang*/
-/* 弹窗 (background) */
+/* window (background) */
 .modal {
-    display: none; /* 默认隐藏 */
+    display: none; 
     position: fixed; 
     z-index: 1; 
     padding-top: 100px; 
@@ -68,7 +68,7 @@ div.ex
     background-color: rgba(0,0,0,0.4);
 }
 
-/* 弹窗内容 */
+/* content */
 .modal-content {
     position: relative;
     background-color: #fefefe;
@@ -83,7 +83,7 @@ div.ex
     animation-duration: 0.1s
 }
 
-/* 添加动画 */
+/* move */
 @-webkit-keyframes animatetop {
     from {top:-300px; opacity:0} 
     to {top:0; opacity:1}
@@ -94,7 +94,7 @@ div.ex
     to {top:0; opacity:1}
 }
 
-/* 关闭按钮 */
+/* close */
 .close {
     color: white;
     float: right;
@@ -130,12 +130,12 @@ div.ex
      
 <!--///////////////////////////////////-->
 
-<!-- 打开弹窗按钮 -->
+<!-- opne window -->
 <button id="myBtn">sign in</button>
-<!-- 弹窗 -->
+<!-- window -->
 <div id="myModal" class="modal">
 
-  <!-- 弹窗内容 -->
+  <!-- content -->
 	<div class="modal-content">
 	  <div class="modal-header">
 	    <span class="close">&times;</span>
@@ -146,7 +146,7 @@ div.ex
 	    <p>context...</p>
 	  </div>
 	  <div class="modal-footer">
-	    <h3>弹窗底部</h3>
+	    <h3>content button</h3>
 	  </div>
 	</div>
     </div> 
@@ -162,26 +162,26 @@ function myFunction()
 {
 	document.getElementById("demo").innerHTML="nothing yet";
 }
-// 获取弹窗
+// get window
 var modal = document.getElementById('myModal');
 
-// 打开弹窗的按钮对象
+// open window object
 var btn = document.getElementById("myBtn");
 
-// 获取 <span> 元素，用于关闭弹窗 that closes the modal
+// get span to closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// 点击按钮打开弹窗
+// click button open window
 btn.onclick = function() {
     modal.style.display = "block";
 }
 
-// 点击 <span> (x), 关闭弹窗
+// close window
 span.onclick = function() {
     modal.style.display = "none";
 }
 
-// 在用户点击其他地方时，关闭弹窗
+// close window when user click other place
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
