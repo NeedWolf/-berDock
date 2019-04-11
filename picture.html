@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+            #box {
+                margin: 50px auto 0px;
+                position: relative;
+                width: 600px;
+                height: 400px;
+                background: #B6C7E5;
+                border: 10px solid #C0C0C0;
+            }
+             
+            a {
+                font-size: 20px;
+                line-height: 25px;
+                text-align: center;
+                text-decoration: none;
+                width: 25px;
+                height: 25px;
+                opacity: 0.8;
+                filter: alpha(opacity:80);
+                background: #fff;
+                color: #000;
+                top: 228px;
+            }
+             
+            a:hover {
+                background: #FFFF00;
+                color: red;
+            }
+             
+            #next {
+                position: absolute;
+                top: 50%;
+                right: 10px;
+            }
+             
+            #prev {
+                position: absolute;
+                top: 50%;
+                left: 10px;
+            }
+             
+            #p1 {
+                margin: 0px;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+             
+            .txt_style {
+                text-align: center;
+                width: 100%;
+                height: 30px;
+                line-height: 30px;
+                font-size: 15px;
+                background: #000;
+                color: #fff;
+                opacity: 0.7;
+                filter: alpha(opacity:70);
+            }
+             
+            #span1 {/*button text*/
+                position: absolute;
+                left: 0px;
+                bottom: 0px;
+            }
+             
+            #img1 {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+        <script type="text/javascript">
+            window.onload = function() {
+                //path
+                var arr = ['file:///C:/Users/55381/Desktop/img/p1.png', 
+                           'file:///C:/Users/55381/Desktop/img/p2.png', 
+                           'file:///C:/Users/55381/Desktop/img/p3.png'];
+                var txt = ['1', '1', '1'];
+                var obt1 = document.getElementById("prev");
+                var obt2 = document.getElementById("next");
+                var oImg = document.getElementById("img1");
+                var oP = document.getElementById("p1");
+                var oSpan = document.getElementById("span1");
+ 
+                var index = 0;
+                function funTab() {
+                    oImg.src = arr[index];
+                    oP.innerHTML = (index + 1) + "/" + arr.length;
+                    oSpan.innerHTML = txt[index];
+                }
+                funTab(); 
+                 
+                obt1.onclick = prevImg;
+                obt2.onclick = nextImg;
+ 
+                function nextImg() {
+                    index++;
+                    if(index > arr.length - 1) {
+                        index = 0;
+                    }
+                    funTab();
+                };
+ 
+                function prevImg() {
+                    index--;
+                    if(index < 0) {
+                        index = arr.length - 1;
+                    }
+                    funTab();
+                }
+                document.onkeydown = function(event) {
+                    var e = event || window.event || arguments.callee.caller.arguments[0];
+                    if(e && e.keyCode == 37) { 
+                        prevImg();
+                    }
+                    if(e && e.keyCode == 39) { 
+                        nextImg();
+                    }
+                };
+            }
+            document.getElementById("btn").onclick = function(){
+    document.getElementById("img").src ="c:/img/aa.jpg"
+};
+        </script>
+    </head>
+ 
+    <body>
+ 
+        <div id="box">
+            <a id="next" href="javascript:;">></a>
+            <a id="prev" href="javascript:;"><</a>
+            <p id="p1" class="txt_style"></p>
+
+                    <span id="span1" class="txt_style"></span>
+                    <img id="img1" />
+        </div>
+    </body>
+ 
+</html>

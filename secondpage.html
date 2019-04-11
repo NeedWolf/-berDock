@@ -29,20 +29,87 @@
                               </li>
                         </ul>
                     </div>
-            </nav>
+            </nav>       
         </div>
-    </header>
-    </body>
+        
+        <div class="bt">  
+         <button type="button" id="demo" onclick="myFunction()">homepage</button>    
+<!--///////////////////////////////////-->   
+<!-- opne window -->
+<button id="myBtn">login</button>
+<!-- window -->
+<div id="myModal" class="modal">
+  <!-- content -->
+	<div class="modal-content">
+	  <div class="modal-header">
+	    <span class="close">&times;</span>
+	    <h2>login</h2>
+	  </div>
+	  <div class="modal-body">
+	    <p style="font-family:arial;color:gray;font-size:20px;">username<input type="text" name="username"></p>
+        <p style="font-family:arial;color:gray;font-size:20px;">password<input type="text" name="password"></p>
+         <span class ="login">submit</span>
+	  </div>
+	  <div class="modal-footer">
+	    <h3>content button</h3>
+	  </div>
+	</div>
+    </div> 
+</div>
+<!menu-->
+<div id="nav">
+  <ul>
+    <li><a href="picture.html" target="iframe_a">detail</a></li>
+   <li><a href="message%20borad.html" target="iframe_a">comment</a></li>
+    <li><a href="none">about</a></li>
+  </ul>
+</div>
+<!--different page-->
+<div class="ex">
+    <iframe src="picture.html"  name="iframe_a" width=100% height=100%></iframe>
+</div>
+<!--///////////////////////////////////////////////-->
 <style>
+#nav{
+	height:50px;
+	width:800px;	
+	background:#eee;
+	margin:0 auto;/*0 上下 auto 左右*/
+	margin-bottom:50px;
+	}
+#nav ul li {
+  	float:left;
+	width:200px;
+	line-height:40px;
+	text-align:center;
+	position:relative;
+}
+
+#nav ul li a{
+	padding:5px 10px;
+	display:block;
+    color: #c3142d;
+    text-align: right; 
+    font-size: 1.5em;
+    line-height: 1.25;
+    font-family: "Adelle Bold", Georgia, serif;
+}
+#nav ul li a:hover {
+    color:#FFF;
+    }
+#nav ul li ul li a{
+	width:80px;
+}
 /*second page box*/
 div.ex
 {
     width = 70%;
-    height: 500px;  
+    height: 900px;  
     padding:10px;
     border:10px solid grey;
     margin:0px;
 }
+
 /*button box*/   
     div.bt
 {
@@ -58,7 +125,7 @@ div.ex
     display: none; 
     position: fixed; 
     z-index: 1; 
-    padding-top: 100px; 
+    padding-top: 200px; 
     left: 0;
     top: 0;
     width: 100%; 
@@ -67,7 +134,6 @@ div.ex
     background-color: rgb(0,0,0); 
     background-color: rgba(0,0,0,0.4);
 }
-
 /* content */
 .modal-content {
     position: relative;
@@ -82,18 +148,15 @@ div.ex
     animation-name: animatetop;
     animation-duration: 0.1s
 }
-
 /* move */
 @-webkit-keyframes animatetop {
     from {top:-300px; opacity:0} 
     to {top:0; opacity:1}
 }
-
 @keyframes animatetop {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
 }
-
 /* close */
 .close {
     color: white;
@@ -101,62 +164,35 @@ div.ex
     font-size: 28px;
     font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
 }
-
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #42b9f4;
     color: white;
 }
-
 .modal-body {padding: 2px 16px;}
-
 .modal-footer {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #42b9f4;
     color: white;
 }
+.login {
+  background-color: #42b9f4;
+  color: #fff;
+  float: inherit;
+  padding: 1em 2.5em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: 2px solid #42b9f4;
+  outline-offset: -2px;
+  font-family: "Proxima Nova Semibold", Helvetica, Sans-Serif; 
+}
 </style>
-    <body>
-     <div class="bt">
-     
-         <button type="button" id="demo" onclick="myFunction()">homepage</button>
-     
-<!--///////////////////////////////////-->
-
-<!-- opne window -->
-<button id="myBtn">sign in</button>
-<!-- window -->
-<div id="myModal" class="modal">
-
-  <!-- content -->
-	<div class="modal-content">
-	  <div class="modal-header">
-	    <span class="close">&times;</span>
-	    <h2>context</h2>
-	  </div>
-	  <div class="modal-body">
-	    <p>context...</p>
-	    <p>context...</p>
-	  </div>
-	  <div class="modal-footer">
-	    <h3>content button</h3>
-	  </div>
-	</div>
-    </div> 
-</div>
-<!--///////////////////////////////////////////////-->
-    
-    <div class="ex">
-        <iframe src="http://www.miamioh.edu"  name="iframe_a" width=100% height=100%></iframe>
-        <p><a href="http://www.miamioh.edu" target="iframe_a">click(one page with app news later)</a></p>
-    </div>
 <script>
 function myFunction()
 {
@@ -164,23 +200,23 @@ function myFunction()
 }
 // get window
 var modal = document.getElementById('myModal');
-
 // open window object
 var btn = document.getElementById("myBtn");
-
 // get span to closes the modal
 var span = document.getElementsByClassName("close")[0];
-
 // click button open window
+var log = document.getElementsByClassName("login")[0];
 btn.onclick = function() {
     modal.style.display = "block";
 }
-
+// submit close 
+log.onclick = function() {
+    modal.style.display = "none";
+}
 // close window
 span.onclick = function() {
     modal.style.display = "none";
 }
-
 // close window when user click other place
 window.onclick = function(event) {
     if (event.target == modal) {
@@ -188,5 +224,6 @@ window.onclick = function(event) {
     }
 }
 </script>
-</body>
+  </header>
+ </body>
 </html>
