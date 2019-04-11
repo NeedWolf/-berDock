@@ -1,3 +1,7 @@
 from django.contrib import admin
+from home.models import App
 
-# Register your models here.
+class HomeAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(App, HomeAdmin)
