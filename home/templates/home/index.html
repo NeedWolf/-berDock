@@ -28,7 +28,11 @@
             <div class="divider"></div>
             <div class="section">
                 <h5>Top Rated</h5>
-                <p>Stuff</p>
+                <ul id="applist">
+                {% for app in object_list %}
+                    <li>{{ app }}</li>
+                {% endfor %}
+                </ul>
             </div>
             <div class="divider"></div>
             <div class="section">
