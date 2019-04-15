@@ -1,7 +1,6 @@
 {% load staticfiles %}
 
 <html>
-
 <head>
     <meta charset="UTF-8">{% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'home/home_style.css' %}" />
@@ -37,10 +36,11 @@
 <div class="container">
 {% if user.is_authenticated %}
     <p>Hi {{ user.username }}!</p>
-    <p><a href="{% url 'logout' %}">logout</a></p>
+    <a href="{% url 'logout' %}">logout</a>
     {% else %}
+    <div>
     <p>You are not logged in.</p>
-    <a href="{% url 'index' %}">homepage</a>
+      <a href="{% url 'index' %}" class="btn btn-info" >homepage</a>
     {% endif %}
     {% block content %}
     {% endblock content %}
