@@ -1,11 +1,38 @@
 {% load staticfiles %}
 
 <html>
+
 <head>
-    <title>Django blog</title>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:���" rel\ ="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    </head>
+    <meta charset="UTF-8">{% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/home_style.css' %}" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>{% block title %}überdock{% endblock %}</title>
+</head>
+<div class="grey lighten-4">
+    <div>
+        <div class="navbar-fixed">
+            <nav class="light-blue darken-3">
+                    <div class="nav-wrapper">
+                        <a href="#" class="brand-logo center">überdock</a>
+                        <ul class="right pull-s1">
+                            <li>
+                               <div class="center row">
+                                  <div class="col s12" >
+                                    <div class="row" id="topbarsearch">
+                                      <div class="light-blue darken-2 input-field col s6 s12 white-text">
+                                        <i class="white-text material-icons prefix">search</i>
+                                        <input type="text" placeholder="Search for apps" id="autocomplete-input" class="autocomplete white-text" >
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </li>
+                        </ul>
+                    </div>
+            </nav>
+        </div>
+    </div>
 <body>
 <div class="container">
 {% if user.is_authenticated %}
@@ -14,7 +41,6 @@
     {% else %}
     <p>You are not logged in.</p>
     <a href="{% url 'index' %}">homepage</a>
-    | <a href="{% url 'signup' %}">signup</a>
     {% endif %}
     {% block content %}
     {% endblock content %}
