@@ -1,17 +1,13 @@
+{% load staticfiles %}
 
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">{% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'home/home_style.css' %}" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-
     <title>{% block title %}überdock{% endblock %}</title>
 </head>
-
-
 <div class="grey lighten-4">
     <div>
         <div class="navbar-fixed">
@@ -36,29 +32,18 @@
             </nav>
         </div>
     </div>
-    </header>
-    <div class="container" >
-    {% if user.is_authenticated %}
-    <p> Hi {{ user.username }}!</p>
-    <p><a href="{% url 'logout' %}">logout</a></p>
+<body>
+<div class="container">
+{% if user.is_authenticated %}
+    <p>Hi {{ user.username }}!</p>
+    <a href="{% url 'logout' %}">logout</a>
     {% else %}
-    <p href="#" class=" ">You are not logged in.</p>
-    <a href="{% url 'login' %}">login</a> |
-    <a href="{% url 'signup' %}">signup</a>
+    <div>
+    <p>You are not logged in.</p>
+      <a href="{% url 'index' %}" class="btn btn-info" >homepage</a>
     {% endif %}
-    </div>
-    <div class="container" id="main_content">
-        {% block content %}
-        {% endblock %}
-    </div>
-<style type="text/css">
-    .box{
-        margin: 0px auto 0px;
-        width: 80%;
-        position: relative;
-        left: 500px;
-        text-align:right;
-    }
-</style>
+    {% block content %}
+    {% endblock content %}
+</div>
 </body>
 </html>

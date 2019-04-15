@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0\/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E2\63XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+<div>
+<form method="post">
+<h2>Login</h2>
+{% csrf_token %}
+{{ form.as_p }}
+<button class="btn btn-success ml-2" type="submit">Login</button>
+</form>
+</div>
+{% endblock content %}
