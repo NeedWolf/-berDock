@@ -1,3 +1,19 @@
-#applist{
+#applist {
     overflow-x: scroll;
+}
+
+.box {
+    margin: 0px auto 0px;
+    width: 80%;
+    position: relative;
+    left: 500px;
+    text-align: right;
+}
+
+.loginoptions{
+    font-style: italic;
+}
+
+.loginoptions:hover{
+    text-decoration: underline;
 }
