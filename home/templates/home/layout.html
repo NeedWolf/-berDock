@@ -16,9 +16,11 @@
                     <div class="container">
                         <div class="left push-s1">
                             {% if user.is_authenticated %}
-                                <p> Hi {{ user.username }}! | <a class="loginoptions" href="{% url 'logout' %}">logout</a></p>
+                                <p> Hi {{ user.username }}! | <a class="loginoptions"
+                                                                 href="{% url 'logout' %}">logout</a></p>
                             {% else %}
-                                <p>You are not logged in,   <a class="loginoptions" href="{% url 'login' %}">login</a> | <a class="loginoptions" href="{% url 'signup' %}">signup</a></p>
+                                <p>You are not logged in, <a class="loginoptions" href="{% url 'login' %}">login</a> |
+                                    <a class="loginoptions" href="{% url 'signup' %}">signup</a></p>
                             {% endif %}
                         </div>
                         <a href="{% url 'index' %}" class="brand-logo center">überdock</a>
@@ -28,13 +30,16 @@
                                     <div class="col s12">
                                         <div class="row" id="topbarsearch">
                                             <div class="light-blue darken-2 input-field col s6 s12 white-text">
+                                                <form method="get" action="{% url 'index' %}">
                                                 <i class="white-text material-icons prefix">search</i>
                                                 <input
                                                         type="text"
+                                                        value="{{ search }}"
                                                         placeholder="Search for apps"
                                                         id="autocomplete-input"
                                                         class="autocomplete white-text"
                                                         name="search">
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
