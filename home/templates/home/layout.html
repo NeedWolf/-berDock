@@ -16,11 +16,16 @@
                     <div class="container">
                         <div class="left push-s1">
                             {% if user.is_authenticated %}
-                                <p> Hi {{ user.username }}! | <a class="loginoptions"
-                                                                 href="{% url 'logout' %}">logout</a></p>
+                                <p> Hi {{ user.username }}! |
+                                    <a class="loginoptions"href="{% url 'logout' %}">logout</a>
+                             | <a href="{% url 'post_new' %}">+ New App</a>
                             {% else %}
                                 <p>You are not logged in, <a class="loginoptions" href="{% url 'login' %}">login</a> |
-                                    <a class="loginoptions" href="{% url 'signup' %}">signup</a></p>
+                                    <a class="loginoptions" href="{% url 'signup' %}">signup</a>
+                            {% endif %}
+                            {% if user.is_superuser %}
+                                    | <a class="loginoptions"href="{% url 'admin:index' %}">adminpage</a>
+
                             {% endif %}
                         </div>
                         <a href="{% url 'index' %}" class="brand-logo center">überdock</a>
