@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView,  DetailView
 
 from django.views.generic.edit import CreateView
-from .models import App
+from .models import App, AppRequest
 from django.http import HttpResponse
 # Create your views here.
 
@@ -38,17 +38,17 @@ class SearchView(ListView):
         return context
 
 class AllappView(ListView):
-    model = App
+    model = AppRequest
     paginate_by = 50
     template_name = 'all_app.html'
 
 class AllappDetailView(DetailView):
-    model = App
+    model = AppRequest
     template_name = 'post_detail.html'
     context_object_name = 'anything_you_want'
 
 class AllappCreateView(CreateView):
-    model = App
+    model = AppRequest
     template_name = 'post_new.html'
     fields = '__all__'
 
