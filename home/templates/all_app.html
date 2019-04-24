@@ -1,0 +1,9 @@
+{% for app in object_list %}
+    <div class="post-entry">
+        <h2><a href="">{{ app.title }}</a></h2>
+        <a href={{ app.link }}>Get {{ app }}</a>
+        </div>
+{% endfor %}
+<div class="nav-right">
+    <a href="{% url 'post_new' %}">+ New Blog Post</a>
+</div>
