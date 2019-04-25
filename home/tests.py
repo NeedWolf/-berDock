@@ -1,12 +1,15 @@
 from django.test import TestCase
 from django.urls import reverse
-from .models import App
+from .models import App, AppRequest
 
 
 def create_app(app_title, app_blurb, app_url):
     return App.objects.create(title=app_title, blurb=app_blurb)
 def requestApp(app_title, app_blurb, app_url):
     return AppRequest(name = app_title, fields = app_blurb)
+
+def sendComment(comment):
+    return Comment(comment)
 
 class AppTestCase(TestCase):
     # Creating an app
@@ -21,6 +24,12 @@ class AppRequestTestCase(TestCase):
         requestedApp1 = requestApp("","","") # fail case (attempt) located here
         requested_app = requestApp("Test: App Request","Blurbity Blurb Blurb 42","google.com") #what Should succeed is here
 
+
+
+class CommentRequestTestCase(TestCase):
+    # Sending out a comment for an app
+    def testingSendComment(self):
+        return sendComment("")
 
 
 
