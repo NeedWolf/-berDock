@@ -11,6 +11,7 @@ def requestApp(app_title, app_blurb, app_url):
 class AppTestCase(TestCase):
     # Creating an app
     def testing_app_created(self):
+        fail_app = create_app("", "", "")
         future_app = create_app("Test", "Blurb1", "google.com")
 
 
