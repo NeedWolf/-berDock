@@ -1,4 +1,8 @@
-<div class="post-entry">
-    <h2>{{ anything_you_want.title }}</h2>
-    <p>{{ anything_you_want.body }}</p>
-    </div>
+{%extends 'home/layout.html' %}
+{% block title %}überdock{% endblock %}
+{% block content %}
+<div class="app-entry">
+    <h2>{{ object.title }}</h2>
+    <p>{{ object.blurb }}</p>
+</div>
+{% endblock %}
