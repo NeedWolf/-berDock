@@ -1,1 +1,1 @@
-web: gunicorn uberdock.wsgi
+web: gunicorn uberdock.wsgi:application
