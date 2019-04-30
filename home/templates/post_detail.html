@@ -4,5 +4,173 @@
 <div class="app-entry">
     <h2>{{ object.title }}</h2>
     <p>{{ object.blurb }}</p>
+    {% if user.is_authenticated %}
+ <body>
+ <div id="content">
+              <div id="post">
+                  <div>
+                  <textarea class="transition"></textarea>
+                      </div>
+                  <input id="postBt" type="button"
+                         style="border:none; background-color:#3EADC5;
+                         color:white;border-radius:5px; width:80px; height:30px;"
+                         value="submit"/>
+             </div>
+             <div id="comment"></div>
+              </div>
+ </body>
+    {% endif %}
 </div>
+         <script type="text/javascript">
+             var named;
+             function delete1(id)
+             {
+                 localStorage.removeItem(id);
+                 this.Storage.writeData();
+             }
+          var Storage =
+          {
+              saveData:function()
+              {
+
+                      var data = document.querySelector("#post textarea");
+                  if(data.value != "")
+                  {
+                      var time = new Date().getTime() + Math.random() * 5;
+                      if (named) {
+                          localStorage.setItem(time, data.value + "|" + named + "|" + this.getDateTime());
+                      }
+                      else
+                      {
+                          localStorage.setItem(time, data.value + "|" + "" + "|" + this.getDateTime());
+                      }
+
+                      data.value = "";
+                      this.writeData();
+                  }
+                  else
+                  {
+                      alert("Write your Review！");
+                 }
+              },
+
+              writeData:function()
+              {
+                 var dataHtml = "", data = "";
+                  for(var i = localStorage.length-1; i >= 0; i--)
+                  {
+                      data = localStorage.getItem(localStorage.key(i)).split("|");
+
+                          //dataHtml += "<p><span class=\"msg\">" + data[0] + "</span><span class=\"datetime\">" + data[1] + "</span><span>" + data[2]+"</span></p>";
+                      dataHtml += "<span style=>" + data[1] + "<span style=\"float:right\">" + data[2] +
+                          "</span><p><span class=\"msg\">" + data[0] +
+                          "<input style=\"float:right;border:none;border-radius:5px;\" " +"</span></p>";
+                  }
+                  document.getElementById("comment").innerHTML = dataHtml;
+              },
+
+              clearData:function()//清空数据
+              {
+                  if(localStorage.length > 0)
+                  {
+                      if(window.confirm("empty？"))
+                      {
+                          localStorage.clear();
+                          this.writeData();
+                      }
+                  }
+                  else
+                 {
+                     alert("it is empty！");
+                  }
+              },
+              getDateTime:function()
+              {
+                  var isZero = function(num)
+                  {
+                      if(num < 10)
+                     {
+                          num = "0" + num;
+                      }
+                      return num;
+                  }
+                  var d = new Date();
+                  return d.getFullYear() + "-" + isZero(d.getMonth() + 1) + "-" + isZero(d.getDate()) + " "
+                      + isZero(d.getHours()) + ":" + isZero(d.getMinutes()) + ":" + isZero(d.getSeconds());
+              }
+          }
+          window.onload = function()
+          {
+              Storage.writeData();
+              document.getElementById("postBt").onclick = function(){Storage.saveData();}
+              document.getElementById("clearBt").onclick = function(){Storage.clearData();}
+          }
+          </script>
+ <html>
+       <head>
+           <meta charset="UTF-8">
+           <meta charset="gb2312">
+           <title>Application Review</title>
+           <style type="text/css">
+           *{
+                margin:0;
+                padding:0;
+           }
+           body,input{
+               font-size:14px;
+               line-height:24px;
+               color:#333;
+               font-family:Microsoft yahei, Song, Arial, Helvetica, Tahoma, Geneva;
+           }
+           #content #post,#comment p{zoom:1;}
+          #content{
+              margin:0 auto;
+              width:960px;
+              overflow:hidden;
+          }
+          #content #post{
+              margin-bottom:15px;
+              padding-bottom:15px;
+              border-bottom:1px #d4d4d4 dashed;
+              height: 400px;
+          }
+          #content #post textarea{
+              display:block;
+              margin-bottom:10px;
+              padding:5px; width:600px;
+              height:250px; border:1px #d1d1d1 solid;
+              border-radius:5px; resize:none;
+              outline:none;
+          }
+          #content #post textarea:hover{
+              border:1px #9bdf70 solid;
+              background:#f0fbeb;
+          }
+               #comment p{
+              margin-bottom:10px;
+              padding:10px;
+              border-radius:5px;
+          }
+                #comment p:nth-child(odd){
+             border:1px solid #e3e197;
+             background:#ffd;
+          }
+          #comment p:nth-child(even){
+              border:1px solid #adcd3c;
+              background:#f2fddb;
+          }
+          /*#comment p span{display:inline; float:left;}*/
+          #comment p .right{
+              text-align:right;
+          }
+          #comment p .msg{width:738px;}
+          #comment p .datetime
+               width:200px;
+               color:#999;
+               text-align:right;
+          }
+           </style>
+      </head>
+ </html>
 {% endblock %}
+
