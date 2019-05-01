@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView,  DetailView
+from django.views.generic import ListView,  DetailView, UpdateView
 
 from django.views.generic.edit import CreateView
-from .models import App, AppRequest
+from .models import App
 from django.http import HttpResponse
 # Create your views here.
 
@@ -11,16 +11,20 @@ class AppView(ListView):
     paginate_by = 50
     template_name = 'home/index.html'
 
-# class AppCreateView(CreateView):
-#     model = App
-#     template_name = 'post_new.html'
-#     fields = '__all__'
-#
-# class AppDetailView(DetailView):
-#     model = App
-#     template_name = 'all_app.html'
-#     context_object_name = 'anything_you_want'
+class AppDetailView(DetailView):
+    model = App
+    template_name = 'post_detail.html'
+    context_object_name = 'anything_you_want'
 
+class AppCreateView(CreateView):
+    model = App
+    template_name = 'post_new.html'
+    fields = '__all__'
+
+class AppUpdateView(UpdateView):
+    model = App
+    fields = ['title', 'body', ]
+    template_name = 'post_edit.html'
 
 class SearchView(ListView):
     model = App
@@ -37,18 +41,4 @@ class SearchView(ListView):
         context['search'] = self.request.GET.get('search', '')
         return context
 
-class AllappView(ListView):
-    model = AppRequest
-    paginate_by = 50
-    template_name = 'all_app.html'
-
-class AllappDetailView(DetailView):
-    model = AppRequest
-    template_name = 'post_detail.html'
-    context_object_name = 'anything_you_want'
-
-class AllappCreateView(CreateView):
-    model = AppRequest
-    template_name = 'post_new.html'
-    fields = '__all__'
 

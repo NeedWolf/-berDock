@@ -7,3 +7,5 @@ class HomeAdmin(admin.ModelAdmin):
 
 admin.site.register(App, HomeAdmin)
 admin.site.register(AppRequest, HomeAdmin)
+
+
