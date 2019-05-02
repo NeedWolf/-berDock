@@ -1,24 +1,31 @@
 from django.test import SimpleTestCase
+from django.urls import reverse, resolve
 from home.views import AppView, SearchView, AppDetailView, AppUpdateView, AppCreateView
 
 class TestUrls(SimpleTestCase):
-    def test_AppView(self):
+    def test_failure(self):
+        # This one SHOULD FAIL PLEASE DO NOT TAKE OUT
+        # This tells us if the test is running
         assert 1 == 2
-        name = "AppName"
-        self.assertEquals(resolve(name).func, AppView)
+
+    def test_AppView(self):
+        url = reverse("index")
+        self.assertEquals(resolve(url).func.view_class, AppView)
 
     def test_AppSearch(self):
-        name = "AppSearch"
-        self.assertEquals(resolve(name).func, SearchView)
+        url = reverse("search")
+        self.assertEquals(resolve(url).func.view_class, SearchView)
 
     def test_AppDetailView(self):
-        name = "AppDetails"
-        self.assertEquals(resolve(name).func, AppDetailView)
+        url = reverse("post_detail", args = [5])
+        self.assertEquals(resolve(url).func.view_class, AppDetailView)
 
     def test_AppUpdate(self):
-        name = "AppUpdateString"
-        self.assertEquals(resolve(name).func, AppUpdateView)
+        # bug found
+        # Getting AppDetail instead of AppUpdate
+        url = reverse("post_edit", args = [1])
+        self.assertEquals(resolve(url).func.view_class, AppUpdateView)
 
     def test_AppCreate(self):
-        name = "App Create View"
-        self.assertEquals(resolve(name).func, AppCreateView)
+        url = reverse("post_new")
+        self.assertEquals(resolve(url).func.view_class, AppCreateView)
