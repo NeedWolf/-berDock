@@ -1,6 +1,6 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
-from home.views import AppView, SearchView, AppDetailView, AppUpdateView, AppCreateView
+from home.views import *
 
 class TestUrls(SimpleTestCase):
     def test_failure(self):
@@ -23,9 +23,9 @@ class TestUrls(SimpleTestCase):
     def test_AppUpdate(self):
         # bug found
         # Getting AppDetail instead of AppUpdate
-        url = reverse("post_edit", args = [1])
-        self.assertEquals(resolve(url).func.view_class, AppUpdateView)
+        url = reverse("apost_new")
+        self.assertEquals(resolve(url).func.view_class, AllappCreateView)
 
     def test_AppCreate(self):
-        url = reverse("post_new")
-        self.assertEquals(resolve(url).func.view_class, AppCreateView)
+        url = reverse("apost_detail", args = [1])
+        self.assertEquals(resolve(url).func.view_class, AllappDetailView)
