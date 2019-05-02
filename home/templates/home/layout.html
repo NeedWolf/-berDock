@@ -18,7 +18,7 @@
                             {% if user.is_authenticated %}
                                 <p> Hi {{ user.username }}! |
                                     <a class="loginoptions"href="{% url 'logout' %}">logout</a>
-                             | <a href="{% url 'post_new' %}">+ New App</a>
+                             | <a href="{% url 'apost_new' %}">+ New App</a>
                             {% else %}
                                 <p>You are not logged in, <a class="loginoptions" href="{% url 'login' %}">login</a> |
                                     <a class="loginoptions" href="{% url 'signup' %}">signup</a>

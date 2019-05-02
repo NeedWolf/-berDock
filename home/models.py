@@ -9,6 +9,8 @@ class App(models.Model):
 
     def __str__(self):
         return self.title
+    def get_absolute_url(self):
+        return reverse('post_detail', args=[str(self.id)])
 
 class AppRequest(models.Model):
     title = models.CharField(max_length=255)
@@ -19,7 +21,6 @@ class AppRequest(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('post_detail', args=[str(self.id)])
-    def get_absolute_url(self):
-        return reverse('index')
+        return reverse('apost_detail', args=[str(self.id)])
+
 
