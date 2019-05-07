@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.views.generic import ListView,  DetailView, UpdateView
 
 from django.views.generic.edit import CreateView
-from .models import App, AppRequest
+from home.models import App, AppRequest, AddComment, Comment
+from . import models
 from django.http import HttpResponse
 # Create your views here.
 
@@ -56,6 +57,9 @@ class AllappDetailView(DetailView):
     template_name = 'apost_detail.html'
     context_object_name = 'anything_you_want'
 
-
+class ComCreateView(CreateView):
+    model = Comment
+    template_name = 'com_new.html'
+    fields = '__all__'
 
 
