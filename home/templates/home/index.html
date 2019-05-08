@@ -3,39 +3,36 @@
 {% block title %}überdock{% endblock %}
 
 {% block content %}
-</header>
+    </header>
 
     <div class="row">
-        <div class="col s2 push-s1 white">
+        <div class="col s3 white">
             <h4 class="center">Categories</h4>
             <div class="divider"></div>
-            <div class="section">
-                <h5>Section 1</h5>
-                <p>Stuff</p>
-            </div>
+            <p>Note-Taking</p>
             <div class="divider"></div>
-            <div class="section">
-                <h5>Section 2</h5>
-                <p>Stuff</p>
-            </div>
+            <p>Flashcards</p>
             <div class="divider"></div>
-            <div class="section">
-                <h5>Section 3</h5>
-                <p>Stuff</p>
-            </div>
+            <p>Language</p>
+            <div class="divider"></div>
+            <p>eBooks</p>
+            <div class="divider"></div>
+            <p>Puzzles & Educational Games</p>
+            <div class="divider"></div>
+            <p>K-12 Learning</p>
+            <div class="divider"></div>
         </div>
 
-        <div class="col s9 push-s1 white">
+        <div class="col s9  white">
             <h3>Featured</h3>
             <div class="divider"></div>
             <div class="section col s12 white">
-                <h5>Top Rated</h5>
                 {% for app in object_list %}
-                    <div class="col s12 m12 l4">
+                    <div class="col s12 m12 l6 xl4">
                         <div class="card blue-grey darken-1">
                             <div class="card-content white-text">
                                 <h5><a href="{% url 'post_detail' app.pk %}">{{ app.title }}</a></h5>
-<!--                                <span class="card-title">{{ app }}</span>-->
+                                <!--                                <span class="card-title">{{ app }}</span>-->
                                 <p>{{ app.blurb }}</p>
                             </div>
                             <div class="card-action">
@@ -44,16 +41,6 @@
                         </div>
                     </div>
                 {% endfor %}
-            </div>
-            <div class="divider"></div>
-            <div class="section">
-                <h5>Popular</h5>
-                <p>Stuff</p>
-            </div>
-            <div class="divider"></div>
-            <div class="section">
-                <h5>Recently Added</h5>
-                <p>Stuff</p>
             </div>
         </div>
     </div>
