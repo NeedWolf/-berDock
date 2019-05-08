@@ -2,10 +2,32 @@ from django.db import models
 from django.urls import reverse
 from django.conf import settings
 # Create your models here.
+class Category(models.Model):
+    name = models.CharField(max_length=200)
+    slug = models.SlugField()
+    parent = models.ForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.SET_NULL)
+
+    class Meta:
+        unique_together = ('slug', 'parent',)
+        verbose_name_plural = "categories"
+
+    def __str__(self):
+        full_path = [self.name]
+
+        k = self.parent
+
+        while k is not None:
+            full_path.append(k.name)
+            k = k.parent
+
+        return ' -> '.join(full_path[::-1])
+
+
 class App(models.Model):
     title = models.CharField(max_length=255)
     blurb = models.TextField(max_length=255)
     link = models.URLField()
+    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
