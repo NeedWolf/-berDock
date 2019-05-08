@@ -11,4 +11,5 @@ urlpatterns = [
   path('app/new/', views.AppCreateView.as_view(), name='post_new'),
   path('request/new/', views.AllappCreateView.as_view(), name='apost_new'),
   path('post/<int:pk>/reqest', views.AllappDetailView.as_view(), name='apost_detail'),
+  path('com/', views.ComCreateView.as_view(), name='com_new'),
 ]
