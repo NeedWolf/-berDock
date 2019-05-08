@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView,  DetailView, UpdateView
-
+from django.shortcuts import get_object_or_404
 from django.views.generic.edit import CreateView
 from home.models import App, AppRequest, AddComment, Comment
 from . import models
@@ -15,7 +15,7 @@ class AppView(ListView):
 class AppDetailView(DetailView):
     model = App
     template_name = 'post_detail.html'
-    context_object_name = 'anything_you_want'
+    context_object_name = 'app_detail'
 
 class AppCreateView(CreateView):
     model = App
@@ -63,3 +63,8 @@ class ComCreateView(CreateView):
     fields = '__all__'
 
 
+class CategoryView(ListView):
+    template_name = 'home/index.html'
+
+    def get_queryset(self):
+        return App.objects.filter(category__name=self.kwargs['category'])

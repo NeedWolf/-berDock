@@ -6,12 +6,15 @@
     <p>{{ object.blurb }}</p>
     {% if user.is_authenticated %}
     {% endif %}
-
+    <div class="divider"></div>
+    <h5>Comments</h5>
 
     {% for comment in object.comments.all %}
     <p> <span class="font-weight-bold">
         {{ comment.author }} &middot;</span>
-        {{ comment }} </p> {% endfor %}
+        {{ comment }} </p>
+
+    {% endfor %}
 <iframe src="{% url 'com_new' %}" width="400" height="200" scrolling="yes" />
 
 
