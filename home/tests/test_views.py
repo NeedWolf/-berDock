@@ -6,10 +6,7 @@ import json
 class TestViews(TestCase):
     # test designed to fail, first off.
     def setUp(self):
-        self.client = Client()
-
-        self.list_url = reverse('list')
-        self.detail_url = reverse('detail')
+        App.objects.create(self)
 
     def test_project_get_SELF(self):
         client = Client()
