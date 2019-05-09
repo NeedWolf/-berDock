@@ -5,8 +5,8 @@ from home.views import AppView, AppCreateView, AppDetailView, AppUpdateView, Sea
 import json
 class TestViews(TestCase):
     # test designed to fail, first off.
-    def setUp(self):
-        App.objects.create()
+    def setUp(appName, appBlurb, appLink, appCategory):
+        App.objects.create(title=appName, blurb=appBlurb, link=appLink, appCategory=appCategory)
 
     def test_project_get_SELF(self):
         client = Client()
