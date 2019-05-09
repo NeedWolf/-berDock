@@ -1,22 +1,26 @@
-{%extends 'home/layout.html' %}
+{% extends 'home/layout.html' %}
 {% block title %}überdock{% endblock %}
 {% block content %}
-<div class="app-entry">
-    <h2>{{ object.title }}</h2>
-    <p>{{ object.blurb }}</p>
-    {% if user.is_authenticated %}
-    {% endif %}
-    <div class="divider"></div>
-    <h5>Comments</h5>
-
-    {% for comment in object.comments.all %}
-    <p> <span class="font-weight-bold">
+    <div class="app-entry">
+        <h2>{{ object.title }}</h2>
+        <p>{{ object.blurb }}</p>
+        {% if user.is_authenticated %}
+        {% endif %}
+        <h5>Comments</h5>
+        <div class="divider"></div>
+        <div style="padding-left: 15px; background-color: aliceblue; overflow-y: scroll; max-height: 30%">
+            {% for comment in object.comments.all %}
+                <p> <span class="font-weight-bold">
         {{ comment.author }} &middot;</span>
-        {{ comment }} </p>
+                    {{ comment }} </p>
+            {% endfor %}
+        </div>
 
-    {% endfor %}
-<iframe src="{% url 'com_new' %}" width="400" height="200" scrolling="yes" />
+        <div class="divider"></div>
+    </div>
 
+    {% block comment %}
+    {% endblock %}
 
 {% endblock content %}
 

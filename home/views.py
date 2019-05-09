@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import ListView,  DetailView, UpdateView
-from django.shortcuts import get_object_or_404
 from django.views.generic.edit import CreateView
 from home.models import App, AppRequest, AddComment, Comment
 from . import models
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect, HttpResponseBadRequest
 # Create your views here.
 
 class AppView(ListView):
@@ -14,7 +13,7 @@ class AppView(ListView):
 
 class AppDetailView(DetailView):
     model = App
-    template_name = 'post_detail.html'
+    template_name = 'com_new.html'
     context_object_name = 'app_detail'
 
 class AppCreateView(CreateView):
@@ -62,9 +61,21 @@ class ComCreateView(CreateView):
     template_name = 'com_new.html'
     fields = '__all__'
 
-
 class CategoryView(ListView):
     template_name = 'home/index.html'
 
     def get_queryset(self):
         return App.objects.filter(category__name=self.kwargs['category'])
+
+def post_comments_controller(request, identifier):
+    from .forms import CommentForm
+    comment_form = CommentForm(request.POST or None)
+    if comment_form.is_valid():
+        comment_obj = comment_form.save(commit=False)
+        app = App.objects.get(title=identifier)
+        comment_obj.author = request.user
+        comment_obj.app = app
+        comment_obj.save()
+        return HttpResponseRedirect('/post/%s/' % app.pk)
+    else:
+        return HttpResponseBadRequest()

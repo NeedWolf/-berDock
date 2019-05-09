@@ -1,7 +1,16 @@
-{% block content %} <h4>Add Comment</h4>
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-success ml-�"
-            type="submit">Save</button> </form>
+{% extends 'post_detail.html' %}
+{% block comment %}
+    <h4>Add Comment</h4>
+    {% if user.is_authenticated %}
+    <form action="{% url 'post_comment' object.title %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="comment">
+        <input type="hidden" name="app" value="{{ object }}">
+        <button class="btn btn-success ml-�"
+                type="submit">Save
+        </button>
+    </form>
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'signup' %}">sign up</a> to leave a comment.</p>
+    {% endif %}
 {% endblock %}

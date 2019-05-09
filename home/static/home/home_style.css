@@ -2,6 +2,11 @@
     overflow-x: scroll;
 }
 
+.comments {
+    max-height: 50%;
+    overflow-y: scroll;
+}
+
 .box {
     margin: 0px auto 0px;
     width: 80%;
