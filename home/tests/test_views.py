@@ -3,10 +3,14 @@ from django.urls import reverse
 from home.models import App, AppRequest
 from home.views import AppView, AppCreateView, AppDetailView, AppUpdateView, SearchView, AllappCreateView, AllappDetailView, AllappView
 import json
+
+
+def create_app(appName, appBlurb, appLink, appCategory):
+    App.objects.create(title=appName, blurb=appBlurb, link=appLink, appCategory=appCategory)
+
+    
 class TestViews(TestCase):
     # test designed to fail, first off.
-    def setUp(appName, appBlurb, appLink, appCategory):
-        App.objects.create(title=appName, blurb=appBlurb, link=appLink, appCategory=appCategory)
 
     def test_project_get_SELF(self):
         client = Client()
