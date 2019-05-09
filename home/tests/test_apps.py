@@ -1,5 +1,4 @@
 from django.test import TestCase, Client
-from django.urls import reverse, resolve
 from home.models import App, AppRequest
 from home.apps import HomeConfig
 
@@ -7,10 +6,11 @@ from home.apps import HomeConfig
 class TestApps(TestCase):
     def setUp(self):
         client = Client()
+
+    def test_failure(self):
         assert 1 == 2
 
     def test_HomeConfig(self):
         client = Client()
-
-        Home = reversed(HomeConfig.home)
-        self.assertEquals(resolve(Home).func.view_class, HomeConfig)
+        home = HomeConfig.name
+        self.assertEquals(home, "home")
