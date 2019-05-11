@@ -37,7 +37,7 @@ class App(models.Model):
 class AppRequest(models.Model):
     title = models.CharField(max_length=255)
     blurb = models.TextField(max_length=255)
-    link = models.URLField(default="http://uberdock.herokuapp.coms")
+    link = models.URLField(null=True)
 
     def __str__(self):
         return self.title
