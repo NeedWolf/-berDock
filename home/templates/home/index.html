@@ -26,13 +26,13 @@
         <div class="col s9  white">
             <h3>Featured</h3>
             <div class="divider"></div>
-            <div class="section col s12 white">
+            <div class="section col s12 white" style="display: flex; align-items: flex-start; justify-content: flex-start; flex-flow: row wrap; width: 100%">
                 {% for app in object_list %}
                     <div class="col s12 m12 l6 xl4">
                         <div class="card blue-grey">
                             <div class="card-content white-text">
                                 <span class="card-title"><a style="font-weight: 350; color: lightskyblue" href="{% url 'post_detail' app.pk %}">{{ app.title }}</a></span>
-                                <a href="{% url 'post_detail' app.pk %}"><p style="font-weight: normal; color: white;">{{ app.blurb }}</p></a>
+                                <a href="{% url 'post_detail' app.pk %}"><p style="font-weight: normal; color: white; overflow: hidden; text-overflow: ellipsis">{{ app.blurb }}</p></a>
                             </div>
                             <div class="card-action">
                                 <a href={{ app.link }}>Get {{ app }}</a>
