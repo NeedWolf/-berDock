@@ -31,9 +31,8 @@
                     <div class="col s12 m12 l6 xl4">
                         <div class="card blue-grey">
                             <div class="card-content white-text">
-                                <h5><a style="color: lightskyblue" href="{% url 'post_detail' app.pk %}">{{ app.title }}</a></h5>
-                                <!--                                <span class="card-title">{{ app }}</span>-->
-                                <p>{{ app.blurb }}</p>
+                                <span class="card-title"><a style="font-weight: 350; color: lightskyblue" href="{% url 'post_detail' app.pk %}">{{ app.title }}</a></span>
+                                <a href="{% url 'post_detail' app.pk %}"><p style="font-weight: normal; color: white;">{{ app.blurb }}</p></a>
                             </div>
                             <div class="card-action">
                                 <a href={{ app.link }}>Get {{ app }}</a>
